@@ -17,17 +17,21 @@ jobs:
         env:
           SECRET1: ${{secrets.SECRET1}}
           SECRET2: ${{secrets.SECRET2}}
+          SECRET3: value_3
         run: |
           echo SECRET1=$SECRET1 > .env
           echo SECRET2=$SECRET2 >> .env
+          echo SECRET3=$SECRET3 >> .env
           cat .env
+
       - name : create .env using third party
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_SECRET1: ${{ secrets.SECRET1 }}
           envkey_SECRET2: ${{ secrets.SECRET2 }}
-          SECRET3: screte3
+          envkey_SECRET3: secret3
           file_name: .env2
+
       - name: check .env2
         run: |
           cat .env2
