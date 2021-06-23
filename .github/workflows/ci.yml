@@ -1,4 +1,4 @@
-name :Testing creation .env
+name: Testing creation dotenv
 
 on: 
   push:
