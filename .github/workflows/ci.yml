@@ -28,8 +28,8 @@ jobs:
           envkey_SECRET2: ${{ secrets.SECRET2 }}
           SECRET3: screte3
           file_name: .env2
+      - name: check .env2
         run: |
-          cat .env2   
-
+          cat .env2
 
       
