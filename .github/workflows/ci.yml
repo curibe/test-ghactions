@@ -1,0 +1,35 @@
+name :Testing creation .env
+
+on: 
+  push:
+   branches: ["master","dev"]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Compile
+        run: echo Hello, world!
+
+      - name: create the .env file manually
+        env:
+          SECRET1: ${{secrets.SECRET1}}
+          SECRET2: ${{secrets.SECRET2}}
+        run: |
+          echo SECRET1=$SECRET1 > .env
+          echo SECRET2=$SECRET2 >> .env
+          cat .env
+      - name : create .env using third party
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_SECRET1: ${{ secrets.SECRET1 }}
+          envkey_SECRET2: ${{ secrets.SECRET2 }}
+          SECRET3: screte3
+          file_name: .env2
+        run: |
+          cat .env2   
+
+
+      
